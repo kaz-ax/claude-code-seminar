@@ -1,0 +1,1320 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Claude Codeセミナー｜2026.05.29</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page: #FFFFFF;
+  --ink-primary: #0B1220;
+  --ink-secondary: #4B5563;
+  --ink-muted: #9CA3AF;
+  --blue: #2563EB;
+  --blue-ink: #1D4ED8;
+  --blue-soft: #E8F0FE;
+  --blue-line: #BFD3FB;
+  --warn: #F6A63A;
+  --success: #22C55E;
+  --surface-card: #F7FAFF;
+  --divider: #E5E7EB;
+  --font-jp: "Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --font-en: "Nunito","Helvetica Neue",sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  --fs-cover-title: 117px;
+  --fs-cover-sub:    53px;
+  --fs-title:        75px;
+  --fs-subtitle:     59px;
+  --fs-body:         48px;
+  --fs-caption:      37px;
+  --fs-header:       32px;
+  --fs-label:        29px;
+  --lh-tight: 1.15;
+  --lh-normal: 1.35;
+  --pad-x: 120px;
+  --header-h: 120px;
+  --pad-bottom: 96px;
+  --r-md: 12px;
+  --r-lg: 20px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #2A2A2F;
+  font-family: var(--font-jp);
+  color: var(--ink-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.stage {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.slide {
+  width: 1920px;
+  height: 1080px;
+  background: var(--bg-page);
+  position: relative;
+  overflow: hidden;
+  transform-origin: center center;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.25);
+  display: none;
+}
+.slide.active { display: block; }
+
+/* Header */
+.hdr {
+  position: absolute;
+  top: 44px;
+  left: var(--pad-x);
+  right: var(--pad-x);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.hdr__mini {
+  font-size: var(--fs-header);
+  font-weight: 800;
+  color: var(--ink-primary);
+  letter-spacing: 0.01em;
+}
+.hdr__meta {
+  font-size: var(--fs-header);
+  font-weight: 500;
+  color: var(--ink-muted);
+  font-family: var(--font-en);
+  letter-spacing: 0.04em;
+}
+
+/* Body */
+.body {
+  position: absolute;
+  top: var(--header-h);
+  left: var(--pad-x);
+  right: var(--pad-x);
+  bottom: var(--pad-bottom);
+}
+.title {
+  font-size: var(--fs-title);
+  font-weight: 900;
+  color: var(--ink-primary);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+  margin: 0 0 64px 0;
+}
+.accent { color: var(--blue); }
+.accent-strong { color: var(--blue-ink); font-weight: 900; }
+
+/* Cover */
+.slide--cover {
+  background:
+    radial-gradient(1200px 900px at 14% 100%, #D8E5FA 0%, rgba(216,229,250,0) 60%),
+    linear-gradient(45deg, #DCE8FB 0%, #E7E6FB 50%, #F4E9FB 100%);
+}
+.slide--cover .hdr__mini { visibility: hidden; }
+.cover-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 140px;
+}
+.cover-eyebrow {
+  font-family: var(--font-en);
+  color: var(--blue-ink);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  font-size: 36px;
+  margin-bottom: 32px;
+  text-transform: uppercase;
+}
+.cover-title {
+  font-size: var(--fs-cover-title);
+  font-weight: 900;
+  color: var(--ink-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0;
+}
+.cover-sub {
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  margin: 56px 0 0 0;
+  letter-spacing: 0.01em;
+}
+
+/* Bullets */
+.bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  font-size: var(--fs-subtitle);
+  font-weight: 800;
+  color: var(--ink-primary);
+  line-height: var(--lh-tight);
+}
+.bullet--dot::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--blue);
+  margin-top: 28px;
+}
+.bullet--check::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 4px solid var(--blue);
+  margin-top: 8px;
+  background:
+    linear-gradient(45deg, transparent 45%, var(--blue) 45%, var(--blue) 55%, transparent 55%) 14px 22px/16px 4px no-repeat,
+    linear-gradient(-45deg, transparent 45%, var(--blue) 45%, var(--blue) 55%, transparent 55%) 20px 18px/20px 4px no-repeat;
+}
+.bullet__sub {
+  display: block;
+  margin-top: 12px;
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+
+/* Soft card */
+.card-soft {
+  background: var(--blue-soft);
+  border-radius: var(--r-md);
+  padding: 36px 48px;
+  font-size: var(--fs-subtitle);
+  font-weight: 800;
+  color: var(--blue-ink);
+  line-height: var(--lh-tight);
+}
+
+/* Caption (centered phrase) */
+.caption-center {
+  margin-top: 120px;
+  font-size: var(--fs-subtitle);
+  font-weight: 800;
+  color: var(--ink-primary);
+  line-height: var(--lh-normal);
+  text-align: center;
+}
+.caption-center .kw { color: var(--blue-ink); font-weight: 900; }
+
+/* Profile grid (slide 2) */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 480px 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 40px;
+}
+.profile-photo {
+  width: 480px; height: 480px;
+  border-radius: var(--r-lg);
+  background:
+    repeating-linear-gradient(135deg, #F3F6FB 0 24px, #EAF0F9 24px 48px);
+  border: 2px dashed #B9C6DE;
+  display: grid; place-items: center;
+  color: #6B7A92;
+  font-family: var(--font-mono);
+  font-size: 26px;
+}
+.profile-info { display: flex; flex-direction: column; gap: 32px; }
+.profile-item {
+  font-size: var(--fs-subtitle);
+  font-weight: 800;
+  color: var(--ink-primary);
+  line-height: 1.2;
+  display: flex; align-items: baseline; gap: 24px;
+}
+.profile-item::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--blue);
+  display: inline-block;
+  transform: translateY(-8px);
+}
+.profile-note {
+  font-size: var(--fs-caption);
+  color: var(--ink-muted);
+  font-weight: 700;
+  margin-top: 16px;
+}
+
+/* Goals hero (slide 3) */
+.hero-center {
+  display: flex; justify-content: center; align-items: center;
+  margin: 60px 0 80px;
+}
+.hero-center svg { width: 280px; height: 280px; }
+
+/* Exercise card (slide 4) */
+.exercise-block {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 80px;
+}
+.exercise-icon {
+  width: 280px; height: 280px;
+  display: grid; place-items: center;
+  background: var(--blue-soft);
+  border-radius: 50%;
+}
+.exercise-icon svg { width: 160px; height: 160px; }
+.exercise-text {
+  display: flex; flex-direction: column; gap: 24px;
+}
+.exercise-prompt {
+  font-size: var(--fs-subtitle);
+  font-weight: 900;
+  color: var(--blue-ink);
+  line-height: 1.25;
+}
+.exercise-hint {
+  font-size: var(--fs-body);
+  color: var(--ink-secondary);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+/* Big phrase (slide 5, 7, 14, 18) */
+.big-phrase {
+  margin-top: 60px;
+  font-size: 80px;
+  font-weight: 900;
+  color: var(--ink-primary);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+.big-phrase .kw { color: var(--blue-ink); }
+.big-phrase-sub {
+  margin-top: 40px;
+  font-size: var(--fs-body);
+  font-weight: 700;
+  color: var(--ink-secondary);
+  line-height: 1.4;
+}
+
+/* Agenda (slide 6, 21) */
+.agenda {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 40px;
+}
+.agenda-row {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  background: var(--blue-soft);
+  border-radius: var(--r-md);
+  padding: 36px 48px;
+}
+.agenda-num {
+  flex: 0 0 auto;
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-en);
+  font-weight: 800;
+  font-size: 56px;
+}
+.agenda-main {
+  font-size: var(--fs-subtitle);
+  font-weight: 800;
+  color: var(--blue-ink);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+.agenda-sub {
+  display: block;
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  color: var(--ink-muted);
+  margin-top: 8px;
+  letter-spacing: 0.01em;
+}
+.agenda-time {
+  margin-left: auto;
+  font-family: var(--font-en);
+  font-weight: 600;
+  font-size: 36px;
+  color: var(--ink-muted);
+}
+
+/* Section divider (slide 8, 11) */
+.slide--section {
+  background:
+    radial-gradient(1000px 700px at 84% 8%, #DCE8FB 0%, rgba(220,232,251,0) 60%),
+    linear-gradient(180deg, #FFFFFF 0%, #F4F7FF 100%);
+}
+.section-wrap {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 0 160px;
+}
+.section-eyebrow {
+  font-family: var(--font-en);
+  color: var(--blue);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  font-size: 40px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.section-title {
+  font-size: 110px;
+  font-weight: 900;
+  color: var(--ink-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  margin: 0;
+}
+.section-sub {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  margin: 40px 0 0 0;
+  line-height: 1.35;
+}
+
+/* Caution (slide 9) */
+.caution {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 80px;
+  align-items: center;
+  margin-top: 40px;
+}
+.caution-list { display: flex; flex-direction: column; gap: 32px; }
+.caution-list .card-soft { padding: 36px 48px; font-size: var(--fs-subtitle); }
+.caution-icon svg { width: 320px; height: 320px; }
+
+/* Demo (slide 10, 13, 16) */
+.demo {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 64px;
+  align-items: stretch;
+  margin-top: 32px;
+  height: 720px;
+}
+.screen {
+  background: var(--surface-card);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--divider);
+  display: flex;
+  flex-direction: column;
+}
+.screen-bar {
+  background: #EEF2F8;
+  padding: 18px 24px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.screen-dot { width: 14px; height: 14px; border-radius: 50%; background: #C9D1DC; }
+.screen-caption {
+  background: var(--blue);
+  color: #fff;
+  padding: 16px 32px;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.screen-body {
+  flex: 1;
+  padding: 48px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 36px;
+  color: var(--ink-secondary);
+  font-weight: 600;
+  line-height: 1.5;
+}
+.screen-body .live {
+  font-family: var(--font-jp);
+  font-size: 64px;
+  font-weight: 900;
+  color: var(--blue-ink);
+  letter-spacing: -0.01em;
+}
+.demo-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.demo-notes .card-soft { font-size: var(--fs-body); padding: 28px 40px; }
+.demo-notes .hint {
+  font-size: var(--fs-caption);
+  color: var(--ink-secondary);
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+/* Process (slide 12) */
+.process-stack {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px 40px;
+  margin-top: 40px;
+}
+.process-item {
+  background: var(--blue-soft);
+  border-radius: var(--r-md);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.process-item-num {
+  flex: 0 0 auto;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-en);
+  font-weight: 800;
+  font-size: 32px;
+}
+.process-item-label {
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--blue-ink);
+  line-height: 1.2;
+}
+.process-summary {
+  margin-top: 56px;
+  font-size: var(--fs-subtitle);
+  font-weight: 900;
+  color: var(--ink-primary);
+  text-align: center;
+  line-height: 1.3;
+}
+.process-summary .kw { color: var(--blue-ink); }
+
+/* Prompt block (slide 15) */
+.prompt-block {
+  background: #0B1220;
+  border-radius: var(--r-lg);
+  padding: 64px 72px;
+  color: #E8F0FE;
+  font-family: var(--font-mono);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-top: 32px;
+  letter-spacing: 0.005em;
+}
+.prompt-block .accent { color: #60A5FA; }
+
+/* Summary (slide 19) */
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-top: 40px;
+}
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-size: var(--fs-subtitle);
+  font-weight: 900;
+  color: var(--blue-ink);
+  line-height: 1.2;
+}
+.summary-ring {
+  flex: 0 0 auto;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 5px solid var(--blue);
+  display: grid; place-items: center;
+}
+.summary-ring svg { width: 42px; height: 42px; }
+
+/* Course detail (slide 20) */
+.course-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 32px;
+}
+.course-block {
+  background: var(--blue-soft);
+  border-radius: var(--r-lg);
+  padding: 40px 48px;
+}
+.course-block h3 {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--blue-ink);
+  margin: 0 0 24px 0;
+  letter-spacing: 0.01em;
+}
+.course-block ul {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.course-block li {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1.3;
+}
+.course-block li::before {
+  content: "▸ ";
+  color: var(--blue);
+  font-weight: 900;
+}
+.course-offer {
+  margin-top: 40px;
+  background: var(--ink-primary);
+  border-radius: var(--r-lg);
+  padding: 40px 48px;
+  color: #fff;
+  display: flex; align-items: center; gap: 32px;
+}
+.course-offer-badge {
+  background: var(--warn);
+  color: var(--ink-primary);
+  font-family: var(--font-en);
+  font-weight: 800;
+  font-size: 30px;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  letter-spacing: 0.08em;
+}
+.course-offer-text {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+/* CTA tiles (slide 21) */
+.cta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 32px;
+}
+.cta-tile {
+  background: var(--surface-card);
+  border: 2px solid var(--blue-line);
+  border-radius: var(--r-lg);
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  min-height: 460px;
+}
+.cta-tile.primary {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+.cta-num {
+  font-family: var(--font-en);
+  font-weight: 800;
+  font-size: 80px;
+  color: var(--blue);
+  line-height: 1;
+}
+.cta-tile.primary .cta-num { color: #fff; }
+.cta-name {
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--blue-ink);
+  line-height: 1.2;
+}
+.cta-tile.primary .cta-name { color: #fff; }
+.cta-desc {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  line-height: 1.4;
+  margin-top: auto;
+}
+.cta-tile.primary .cta-desc { color: rgba(255,255,255,0.92); }
+.cta-tag {
+  background: var(--blue-soft);
+  color: var(--blue-ink);
+  font-family: var(--font-en);
+  font-weight: 800;
+  font-size: 22px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  letter-spacing: 0.08em;
+}
+.cta-tile.primary .cta-tag {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+}
+
+/* Q&A (slide 17) */
+.qa-wrap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.qa-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+.qa-glyph {
+  font-family: var(--font-en);
+  font-size: 360px;
+  font-weight: 800;
+  color: var(--blue);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+.qa-caption {
+  font-size: var(--fs-title);
+  font-weight: 900;
+  color: var(--ink-primary);
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+.qa-sub {
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* Final cover (slide 22) */
+.slide--final {
+  background:
+    radial-gradient(1200px 900px at 86% 100%, #DCE8FB 0%, rgba(220,232,251,0) 60%),
+    linear-gradient(45deg, #F4E9FB 0%, #E7E6FB 50%, #DCE8FB 100%);
+}
+.slide--final .hdr__mini { visibility: hidden; }
+
+/* Navigation UI */
+.nav {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: rgba(255,255,255,0.96);
+  border-radius: 9999px;
+  padding: 6px 12px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+  z-index: 100;
+  font-family: var(--font-jp);
+}
+.nav-btn {
+  border: 0;
+  background: var(--blue-soft);
+  color: var(--blue-ink);
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  transition: background .15s ease, color .15s ease;
+  font-family: var(--font-en);
+}
+.nav-btn:hover { background: var(--blue); color: #fff; }
+.nav-btn:disabled { opacity: 0.4; cursor: not-allowed; background: var(--divider); color: var(--ink-muted); }
+.nav-indicator {
+  font-family: var(--font-en);
+  font-weight: 700;
+  color: var(--ink-secondary);
+  padding: 0 10px;
+  font-size: 14px;
+  min-width: 56px;
+  text-align: center;
+}
+.nav-indicator .cur { color: var(--blue-ink); font-weight: 800; }
+.nav-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  padding: 0 8px;
+  border-left: 1px solid var(--divider);
+  margin-left: 4px;
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.help {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  z-index: 100;
+  letter-spacing: 0.04em;
+}
+
+/* Print-friendly fallback */
+@media print {
+  body { background: #fff; }
+  .nav, .help { display: none; }
+  .slide { display: block !important; page-break-after: always; box-shadow: none; transform: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="help">← → / Space  ·  H: home</div>
+
+<div class="stage">
+
+<!-- ============ Slide 1 / Cover ============ -->
+<section class="slide slide--cover active" data-num="1" data-title="表紙">
+  <div class="hdr"><div class="hdr__mini">&nbsp;</div><div class="hdr__meta">2026.05.29 / Webinar</div></div>
+  <div class="cover-wrap">
+    <div class="cover-eyebrow">Claude Code Seminar</div>
+    <h1 class="cover-title">あなたの仕事と<br>御社の仕事を、<br>自分の手で変える60分</h1>
+    <p class="cover-sub">2026.05.29 — Webinar</p>
+  </div>
+</section>
+
+<!-- ============ Slide 2 / 自己紹介 ============ -->
+<section class="slide" data-num="2" data-title="講師：川端">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">02 / 22</div></div>
+  <div class="body">
+    <h2 class="title">講師：川端</h2>
+    <div class="profile-grid">
+      <div class="profile-photo">[ プロフィール画像 ]</div>
+      <div class="profile-info">
+        <div class="profile-item">AI+ AIスクール 運営</div>
+        <div class="profile-item">Claude Code 入門・実践 講座 講師</div>
+        <div class="profile-item">[ 実績・登壇 を追記 ]</div>
+        <div class="profile-note">※プロフィール画像と実績データは差し替え対象</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 3 / 本日のゴール ============ -->
+<section class="slide" data-num="3" data-title="本日のゴール">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">03 / 22</div></div>
+  <div class="body">
+    <h2 class="title">本日のゴール</h2>
+    <div class="hero-center">
+      <svg viewBox="0 0 280 280" aria-hidden="true">
+        <circle cx="140" cy="140" r="120" fill="none" stroke="#0B1220" stroke-width="14"/>
+        <circle cx="140" cy="140" r="78"  fill="none" stroke="#0B1220" stroke-width="12"/>
+        <circle cx="140" cy="140" r="36"  fill="#2563EB"/>
+        <path d="M198 82 L242 38" stroke="#2563EB" stroke-width="14" stroke-linecap="round"/>
+        <path d="M242 38 L222 70 M242 38 L210 58" stroke="#2563EB" stroke-width="14" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="bullet-list">
+      <div class="bullet bullet--dot">
+        <div>今日、Claude Code を <span class="accent-strong">自分のPCで動かせるようになる</span></div>
+      </div>
+      <div class="bullet bullet--dot">
+        <div>"自分にもできそう" を持ち帰る</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 4 / 1時間後のあなた ============ -->
+<section class="slide" data-num="4" data-title="1時間後のあなた">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">04 / 22</div></div>
+  <div class="body">
+    <h2 class="title">1時間後のあなた</h2>
+    <div class="exercise-block">
+      <div class="exercise-icon">
+        <svg viewBox="0 0 160 160" aria-hidden="true">
+          <path d="M28 36 H132 a8 8 0 0 1 8 8 V108 a8 8 0 0 1 -8 8 H62 L40 138 V116 H28 a8 8 0 0 1 -8 -8 V44 a8 8 0 0 1 8 -8 Z"
+                fill="none" stroke="#2563EB" stroke-width="10" stroke-linejoin="round"/>
+          <path d="M48 64 H112 M48 86 H96" stroke="#2563EB" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="exercise-text">
+        <div class="exercise-prompt">"1時間後のわたし" を<br>チャットに一言、書いてみてください</div>
+        <div class="exercise-hint">例：自分のPCで動かせるようになっている／週次レポートを自動化したい／チームに展開したい</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 5 / なぜ今 ============ -->
+<section class="slide" data-num="5" data-title="なぜ今やるべきか">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">05 / 22</div></div>
+  <div class="body">
+    <h2 class="title">なぜ、今やるべきか</h2>
+    <div class="big-phrase">
+      「使う・使わない」ではなく<br>
+      <span class="kw">「自分で動かせる」</span>かで<br>
+      差がつく時代
+    </div>
+    <div class="big-phrase-sub">AIを語る側 から、AIに仕事をさせる側 へ</div>
+  </div>
+</section>
+
+<!-- ============ Slide 6 / 今日できるようになること ============ -->
+<section class="slide" data-num="6" data-title="今日できるようになること">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">06 / 22</div></div>
+  <div class="body">
+    <h2 class="title">この60分で体験すること</h2>
+    <div class="agenda">
+      <div class="agenda-row">
+        <div class="agenda-num">1</div>
+        <div class="agenda-main">セットアップ<span class="agenda-sub">あなたのPCでClaude Codeが動く</span></div>
+        <div class="agenda-time">15 min</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-num">2</div>
+        <div class="agenda-main">業務自動化を目撃<span class="agenda-sub">朝のルーティンが一発のコマンドで完了する様子</span></div>
+        <div class="agenda-time">5 min</div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-num">3</div>
+        <div class="agenda-main">1プロンプトで資料が出る<span class="agenda-sub">日本語の依頼1本でリサーチ→HTML資料化</span></div>
+        <div class="agenda-time">5 min</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 7 / Claude Codeとは ============ -->
+<section class="slide" data-num="7" data-title="Claude Codeとは">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">07 / 22</div></div>
+  <div class="body">
+    <h2 class="title">Claude Code とは</h2>
+    <div class="big-phrase">
+      <span class="kw">AIが、自分のPCで動いて</span><br>
+      業務を実行してくれる
+    </div>
+    <div class="big-phrase-sub">"指示する人" になれば、あとはAIが調べる・作る・整える</div>
+  </div>
+</section>
+
+<!-- ============ Slide 8 / デモ①扉 ============ -->
+<section class="slide slide--section" data-num="8" data-title="【デモ①】環境構築">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">08 / 22</div></div>
+  <div class="section-wrap">
+    <div class="section-eyebrow">Demo 01 / 15 min</div>
+    <h2 class="section-title">15分後、<br>あなたのPCで<br>Claude Codeが動いています</h2>
+    <p class="section-sub">セットアップ → 起動 → 最初の一言まで、一緒にやります</p>
+  </div>
+</section>
+
+<!-- ============ Slide 9 / Mac/Windows両方やる ============ -->
+<section class="slide" data-num="9" data-title="Mac/Windows両方やります">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">09 / 22</div></div>
+  <div class="body">
+    <h2 class="title">Mac／Windows 両方やります</h2>
+    <div class="caution">
+      <div class="caution-list">
+        <div class="card-soft">事前にインストール済みでも、両方の手順を一緒に見ます</div>
+        <div class="card-soft">理由：今後、社内の同僚へ <span class="accent">教える機会</span> があるから</div>
+        <div class="card-soft">片方の参加者にも "教えるため" の価値を持ち帰ってもらう</div>
+      </div>
+      <div class="caution-icon">
+        <svg viewBox="0 0 240 240" aria-hidden="true">
+          <rect x="34" y="60" width="80" height="58" rx="6" fill="none" stroke="#0B1220" stroke-width="10"/>
+          <rect x="50" y="122" width="48" height="10" rx="3" fill="#0B1220"/>
+          <path d="M126 60 H206 a6 6 0 0 1 6 6 V134 a6 6 0 0 1 -6 6 H170 L156 158 V140 H126 a6 6 0 0 1 -6 -6 V66 a6 6 0 0 1 6 -6 Z"
+                fill="#E8F0FE" stroke="#2563EB" stroke-width="10" stroke-linejoin="round"/>
+          <path d="M138 84 H196 M138 104 H180" stroke="#2563EB" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 10 / デモ①実演 ============ -->
+<section class="slide" data-num="10" data-title="デモ① 実演">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">10 / 22</div></div>
+  <div class="body">
+    <h2 class="title">【デモ①】環境構築 — ライブ実演</h2>
+    <div class="demo">
+      <div class="screen">
+        <div class="screen-bar"><span class="screen-dot"></span><span class="screen-dot"></span><span class="screen-dot"></span></div>
+        <div class="screen-caption">画面共有 — Terminal / PowerShell</div>
+        <div class="screen-body">
+          <div>
+            <div class="live">▶ LIVE</div>
+            <div style="margin-top:24px">講師の画面を共有中</div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-notes">
+        <div class="card-soft">Mac: ネイティブインストーラー</div>
+        <div class="card-soft">Windows: Git for Windows + インストーラー</div>
+        <div class="card-soft">起動 → サインイン → "Hello"</div>
+        <div class="hint">※ ハマったらチャットへ／全員で1人を待ちます</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 11 / デモ②扉 ============ -->
+<section class="slide slide--section" data-num="11" data-title="【デモ②】業務効率化">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">11 / 22</div></div>
+  <div class="section-wrap">
+    <div class="section-eyebrow">Demo 02 / 10 min</div>
+    <h2 class="section-title">"自分の業務にも使えそう"<br>を持ち帰ってください</h2>
+    <p class="section-sub">川端の業務スタック → 1プロンプトで資料作成、の二本立て</p>
+  </div>
+</section>
+
+<!-- ============ Slide 12 / 朝の業務スタック ============ -->
+<section class="slide" data-num="12" data-title="朝の業務スタック">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">12 / 22</div></div>
+  <div class="body">
+    <h2 class="title">川端の朝の業務 — 一発のコマンドで終わる</h2>
+    <div class="process-stack">
+      <div class="process-item">
+        <div class="process-item-num">1</div>
+        <div class="process-item-label">1日の予定確認<br><span style="font-size:24px;color:#4B5563">Google カレンダー</span></div>
+      </div>
+      <div class="process-item">
+        <div class="process-item-num">2</div>
+        <div class="process-item-label">部下の日報確認<br><span style="font-size:24px;color:#4B5563">Slack 連携</span></div>
+      </div>
+      <div class="process-item">
+        <div class="process-item-num">3</div>
+        <div class="process-item-label">受講生向け配信記事<br><span style="font-size:24px;color:#4B5563">Slack → Notion</span></div>
+      </div>
+      <div class="process-item">
+        <div class="process-item-num">4</div>
+        <div class="process-item-label">出演ブリーフィング<br><span style="font-size:24px;color:#4B5563">リサーチ → Notion</span></div>
+      </div>
+      <div class="process-item">
+        <div class="process-item-num">5</div>
+        <div class="process-item-label">SNS投稿の下書き<br><span style="font-size:24px;color:#4B5563">SNS → Notion</span></div>
+      </div>
+      <div class="process-item">
+        <div class="process-item-num">6</div>
+        <div class="process-item-label">朝の画像生成<br><span style="font-size:24px;color:#4B5563">画像モデル連携</span></div>
+      </div>
+    </div>
+    <div class="process-summary">
+      <span class="kw">1コマンド + 少しの会話</span> で、ここまで終わる
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 13 / デモ②-1 実演 ============ -->
+<section class="slide" data-num="13" data-title="デモ②-1 実演">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">13 / 22</div></div>
+  <div class="body">
+    <h2 class="title">【デモ②-1】朝の業務自動化 — ライブ実演</h2>
+    <div class="demo">
+      <div class="screen">
+        <div class="screen-bar"><span class="screen-dot"></span><span class="screen-dot"></span><span class="screen-dot"></span></div>
+        <div class="screen-caption">画面共有 — 川端の業務環境</div>
+        <div class="screen-body">
+          <div>
+            <div class="live">▶ LIVE</div>
+            <div style="margin-top:24px">講師の画面を共有中</div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-notes">
+        <div class="card-soft">"朝の準備、いつものやつ" と話しかける</div>
+        <div class="card-soft">スケジュール → 日報 → 記事 → SNS → 画像</div>
+        <div class="card-soft">応用喚起：あなたの朝のルーティンは？</div>
+        <div class="hint">※ チャットに "自分の業務で置き換えるならどこ" を一言</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 14 / リサーチ→資料作成 ============ -->
+<section class="slide" data-num="14" data-title="リサーチ→資料作成">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">14 / 22</div></div>
+  <div class="body">
+    <h2 class="title">リサーチ → 資料作成</h2>
+    <div class="big-phrase">
+      <span class="kw">日本語のプロンプト1本</span>で<br>
+      競合分析資料が、出る
+    </div>
+    <div class="big-phrase-sub">ウェブから情報を集め、比較し、プレゼン用HTMLに整える ─ 全部</div>
+  </div>
+</section>
+
+<!-- ============ Slide 15 / プロンプト全文 ============ -->
+<section class="slide" data-num="15" data-title="プロンプト全文">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">15 / 22</div></div>
+  <div class="body">
+    <h2 class="title">これだけ、です</h2>
+    <div class="prompt-block">回転寿司大手3社（スシロー・くら寿司・かっぱ寿司）の
+最新の<span class="accent">IR情報</span>をウェブでリサーチして、
+<span class="accent">売上・営業利益・店舗数・客単価</span>を比較分析してください。
+
+調査が終わったら <span class="accent">frontend-design スキル</span>を使って、
+経営者がパッと見て差がわかる白基調の
+見やすい<span class="accent">HTML 1枚</span>にまとめてください。
+比較チャート付き、そのままプレゼンに使えるクオリティで</div>
+  </div>
+</section>
+
+<!-- ============ Slide 16 / デモ②-2 実演 ============ -->
+<section class="slide" data-num="16" data-title="デモ②-2 実演">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">16 / 22</div></div>
+  <div class="body">
+    <h2 class="title">【デモ②-2】リサーチ→資料作成 — ライブ実演</h2>
+    <div class="demo">
+      <div class="screen">
+        <div class="screen-bar"><span class="screen-dot"></span><span class="screen-dot"></span><span class="screen-dot"></span></div>
+        <div class="screen-caption">画面共有 — Claude Code + ブラウザ</div>
+        <div class="screen-body">
+          <div>
+            <div class="live">▶ LIVE</div>
+            <div style="margin-top:24px">プロンプト投下 → 結果まで</div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-notes">
+        <div class="card-soft">プロンプトを貼って Enter</div>
+        <div class="card-soft">リサーチ → 比較 → HTML完成</div>
+        <div class="card-soft">応用：業界・テーマを変えればすぐ転用</div>
+        <div class="hint">※ チャット質問は実行中も受付</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 17 / 質疑応答 ============ -->
+<section class="slide" data-num="17" data-title="質疑応答">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">17 / 22</div></div>
+  <div class="qa-wrap">
+    <div class="qa-stack">
+      <div class="qa-glyph">Q &amp; A</div>
+      <div>
+        <div class="qa-caption">質問にお答えします</div>
+        <div class="qa-sub">気になる点を、そのままチャットへ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 18 / 本講座の位置づけ ============ -->
+<section class="slide" data-num="18" data-title="本講座の位置づけ">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">18 / 22</div></div>
+  <div class="body">
+    <h2 class="title">本講座「Claude Codeをはじめよう」の位置づけ</h2>
+    <div class="big-phrase">
+      今日の体験を<br>
+      <span class="kw">あなたの業務で再現できる</span>ようになる<br>
+      ライブ・ウェビナー型 入門講座
+    </div>
+    <div class="big-phrase-sub">AIに馴染みのなかった方こそ、最短距離で "動かせる側" へ</div>
+  </div>
+</section>
+
+<!-- ============ Slide 19 / 到達できる姿 ============ -->
+<section class="slide" data-num="19" data-title="受講後に到達できる姿">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">19 / 22</div></div>
+  <div class="body">
+    <h2 class="title">受講後、あなたができること</h2>
+    <div class="summary-list">
+      <div class="summary-item">
+        <div class="summary-ring"><svg viewBox="0 0 40 40"><path d="M8 22 L16 30 L32 12" stroke="#2563EB" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+        自分のPCでClaude Codeを安定運用
+      </div>
+      <div class="summary-item">
+        <div class="summary-ring"><svg viewBox="0 0 40 40"><path d="M8 22 L16 30 L32 12" stroke="#2563EB" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+        自分の業務に合わせたプロンプト設計
+      </div>
+      <div class="summary-item">
+        <div class="summary-ring"><svg viewBox="0 0 40 40"><path d="M8 22 L16 30 L32 12" stroke="#2563EB" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+        リサーチ・資料作成・データ整形の自動化
+      </div>
+      <div class="summary-item">
+        <div class="summary-ring"><svg viewBox="0 0 40 40"><path d="M8 22 L16 30 L32 12" stroke="#2563EB" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+        社内へ展開するための説明と教え方
+      </div>
+      <div class="summary-item">
+        <div class="summary-ring"><svg viewBox="0 0 40 40"><path d="M8 22 L16 30 L32 12" stroke="#2563EB" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+        [ 到達点⑤ ／ 川端さん追記予定 ]
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 20 / 本講座詳細＋特典＋オファー ============ -->
+<section class="slide" data-num="20" data-title="本講座 詳細・特典・本日限定オファー">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">20 / 22</div></div>
+  <div class="body">
+    <h2 class="title">「Claude Codeをはじめよう」— 詳細</h2>
+    <div class="course-grid">
+      <div class="course-block">
+        <h3>講座の中身</h3>
+        <ul>
+          <li>形式：ライブ・ウェビナー</li>
+          <li>期間：[ 期間を追記 ]</li>
+          <li>開講日：[ 開講日を追記 ]</li>
+          <li>料金：[ 料金を追記 ]</li>
+        </ul>
+      </div>
+      <div class="course-block">
+        <h3>4つの特典</h3>
+        <ul>
+          <li>個別業務ヒアリング 30分（先着10名）</li>
+          <li>法人導入チェックリスト</li>
+          <li>個人スキルアップ・ロードマップ</li>
+          <li>修了証＋領収書セット発行</li>
+        </ul>
+      </div>
+    </div>
+    <div class="course-offer">
+      <div class="course-offer-badge">TODAY ONLY</div>
+      <div class="course-offer-text">[ 本日限定オファーの中身を追記 ]</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 21 / 3択CTA ============ -->
+<section class="slide" data-num="21" data-title="次の一歩を選んでください">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">21 / 22</div></div>
+  <div class="body">
+    <h2 class="title">次の一歩を、選んでください</h2>
+    <div class="cta-grid">
+      <div class="cta-tile primary">
+        <div class="cta-num">01</div>
+        <div class="cta-name">本講座に申し込む</div>
+        <div class="cta-tag">前のめり層</div>
+        <div class="cta-desc">今日の体験を業務で再現できるようになる</div>
+      </div>
+      <div class="cta-tile">
+        <div class="cta-num">02</div>
+        <div class="cta-name">個別ヒアリング 30分</div>
+        <div class="cta-tag">先着 10名</div>
+        <div class="cta-desc">あなたの業務／組織のための相談枠</div>
+      </div>
+      <div class="cta-tile">
+        <div class="cta-num">03</div>
+        <div class="cta-name">資料を受け取る</div>
+        <div class="cta-tag">探索層</div>
+        <div class="cta-desc">まず資料で内容を確かめたい方へ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Slide 22 / 締め ============ -->
+<section class="slide slide--final" data-num="22" data-title="あなたの番です">
+  <div class="hdr"><div class="hdr__mini">&nbsp;</div><div class="hdr__meta">2026.05.29 / Webinar</div></div>
+  <div class="cover-wrap">
+    <div class="cover-eyebrow">Your Turn</div>
+    <h1 class="cover-title">あなたの仕事と<br>御社の仕事を、<br>自分の手で変えよう</h1>
+    <p class="cover-sub">Thank you — see you in the course</p>
+  </div>
+</section>
+
+</div><!-- /.stage -->
+
+<div class="nav">
+  <button class="nav-btn prev" aria-label="前へ">‹</button>
+  <span class="nav-indicator"><span class="cur">1</span> / 22</span>
+  <button class="nav-btn next" aria-label="次へ">›</button>
+  <span class="nav-title" id="nav-title">表紙</span>
+</div>
+
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  const cur = document.querySelector('.nav-indicator .cur');
+  const titleEl = document.getElementById('nav-title');
+  const prevBtn = document.querySelector('.nav-btn.prev');
+  const nextBtn = document.querySelector('.nav-btn.next');
+  let current = 1;
+
+  function show(n) {
+    n = Math.max(1, Math.min(total, n));
+    current = n;
+    slides.forEach((el) => {
+      el.classList.toggle('active', Number(el.dataset.num) === n);
+    });
+    cur.textContent = n;
+    const t = slides.find(s => Number(s.dataset.num) === n);
+    titleEl.textContent = t ? t.dataset.title : '';
+    prevBtn.disabled = (n === 1);
+    nextBtn.disabled = (n === total);
+    if (history.replaceState) history.replaceState(null, '', '#' + n);
+    fit();
+  }
+
+  function fit() {
+    const s = Math.min(innerWidth / 1920, innerHeight / 1080);
+    slides.forEach(el => {
+      el.style.transform = `scale(${s})`;
+    });
+  }
+
+  prevBtn.addEventListener('click', () => show(current - 1));
+  nextBtn.addEventListener('click', () => show(current + 1));
+  addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { show(current + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { show(current - 1); e.preventDefault(); }
+    else if (e.key === 'Home' || e.key === 'h' || e.key === 'H') show(1);
+    else if (e.key === 'End') show(total);
+    else if (/^[0-9]$/.test(e.key)) {
+      const digit = parseInt(e.key, 10);
+      if (digit > 0 && digit <= total) show(digit);
+    }
+  });
+  addEventListener('resize', fit);
+  addEventListener('hashchange', () => {
+    const n = parseInt(location.hash.slice(1), 10);
+    if (n) show(n);
+  });
+
+  const initial = parseInt(location.hash.slice(1), 10);
+  show(initial || 1);
+})();
+</script>
+
+</body>
+</html>
