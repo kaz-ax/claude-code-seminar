@@ -134,13 +134,15 @@ body {
   display: inline-flex;
   align-items: center;
   margin-bottom: 56px;
+  padding: 24px 48px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(11,18,32,0.12);
 }
 .cover-logo img {
-  height: 140px;
+  height: 120px;
   width: auto;
   display: block;
-  border-radius: 16px;
-  box-shadow: 0 12px 32px rgba(11,18,32,0.18);
 }
 .cover-logo svg { width: 56px; height: 56px; flex: 0 0 auto; }
 .cover-logo-text {
@@ -363,7 +365,41 @@ body {
 .title--compact {
   font-size: 56px;
   letter-spacing: -0.005em;
-  margin-bottom: 56px;
+  margin-bottom: 40px;
+}
+
+/* Course preview (slide 18 right column) */
+.course-preview-split {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 56px;
+  align-items: center;
+  margin-top: 8px;
+}
+.course-preview-split .big-phrase { margin-top: 0; font-size: 54px; line-height: 1.2; }
+.course-preview-split .big-phrase-sub { font-size: 32px; }
+.course-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 230px);
+  grid-template-rows: repeat(3, auto);
+  gap: 12px;
+  width: 472px;
+}
+.course-preview-grid .course-img {
+  aspect-ratio: 16/10;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(11,18,32,0.14);
+  border: 1px solid rgba(11,18,32,0.06);
+  background: #FFFFFF;
+  transition: transform .2s ease;
+}
+.course-preview-grid .course-img:nth-child(odd) { transform: translateX(-8px); }
+.course-preview-grid .course-img:nth-child(even) { transform: translateX(8px); }
+.course-preview-grid .course-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Claude Code hero logo (slide 7) */
@@ -993,7 +1029,7 @@ body {
   <div class="hdr"><div class="hdr__mini">&nbsp;</div><div class="hdr__meta">2026.05.29 / Webinar</div></div>
   <div class="cover-wrap">
     <div class="cover-logo">
-      <img src="assets/claude-code-logo.png" alt="Claude Code">
+      <img src="assets/claude-logo.png" alt="Claude">
     </div>
     <h1 class="cover-title">あなたの仕事を<br>自分の手で変える60分</h1>
     <p class="cover-sub">2026.05.29 — Webinar</p>
@@ -1367,13 +1403,25 @@ body {
   <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">18 / 23</div></div>
   <div class="body">
     <h2 class="title title--compact">AI+ の選択式応用講座「Claude Code 入門・実践」</h2>
-    <div class="big-phrase">
-      今日の体験を<br>
-      <span class="kw">あなたの業務で再現し</span><br>
-      AIを使い倒せるようになる<br>
-      実践講座
+    <div class="course-preview-split">
+      <div>
+        <div class="big-phrase">
+          今日の体験を<br>
+          <span class="kw">あなたの業務で再現し</span><br>
+          AIを使い倒せるようになる<br>
+          実践講座
+        </div>
+        <div class="big-phrase-sub">AIに馴染みのなかった方こそ、最短距離で「動かせる側」へ</div>
+      </div>
+      <div class="course-preview-grid">
+        <div class="course-img"><img src="assets/course-1.png" alt="講座プレビュー 1"></div>
+        <div class="course-img"><img src="assets/course-2.png" alt="講座プレビュー 2"></div>
+        <div class="course-img"><img src="assets/course-3.png" alt="講座プレビュー 3"></div>
+        <div class="course-img"><img src="assets/course-4.png" alt="講座プレビュー 4"></div>
+        <div class="course-img"><img src="assets/course-5.png" alt="講座プレビュー 5"></div>
+        <div class="course-img"><img src="assets/course-6.png" alt="講座プレビュー 6"></div>
+      </div>
     </div>
-    <div class="big-phrase-sub">AIに馴染みのなかった方こそ、最短距離で「動かせる側」へ</div>
   </div>
 </section>
 
