@@ -374,10 +374,10 @@ body {
 }
 .slide-image-wrap {
   position: absolute;
-  top: 110px;
-  left: 80px;
-  right: 80px;
-  bottom: 70px;
+  top: 100px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
   display: grid;
   place-items: center;
 }
@@ -391,23 +391,30 @@ body {
   border-radius: 14px;
   box-shadow: 0 24px 64px rgba(11,18,32,0.16);
 }
+/* Contained variant (p.18 sponsor panel — keep away from edges) */
+.slide-image-wrap--contained {
+  top: 140px;
+  left: 200px;
+  right: 200px;
+  bottom: 100px;
+}
 
 /* Course preview (slide 21 right column) */
 .course-preview-split {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 56px;
+  grid-template-columns: 1fr 420px;
+  gap: 48px;
   align-items: center;
   margin-top: 8px;
 }
-.course-preview-split .big-phrase { margin-top: 0; font-size: 54px; line-height: 1.2; }
-.course-preview-split .big-phrase-sub { font-size: 32px; }
+.course-preview-split .big-phrase { margin-top: 0; font-size: 72px; line-height: 1.18; font-weight: 900; }
+.course-preview-split .big-phrase-sub { font-size: 36px; margin-top: 32px; }
 .course-preview-grid {
   display: grid;
-  grid-template-columns: repeat(2, 230px);
+  grid-template-columns: repeat(2, 205px);
   grid-template-rows: repeat(3, auto);
-  gap: 12px;
-  width: 472px;
+  gap: 10px;
+  width: 420px;
 }
 .course-preview-grid .course-img {
   aspect-ratio: 16/10;
@@ -1184,17 +1191,17 @@ body {
       <div class="agenda-row">
         <div class="agenda-num">1</div>
         <div class="agenda-main">セットアップ<span class="agenda-sub">あなたのPCでClaude Codeが動く</span></div>
-        <div class="agenda-time">15 min</div>
+        <div class="agenda-time">20 min</div>
       </div>
       <div class="agenda-row">
         <div class="agenda-num">2</div>
         <div class="agenda-main">業務自動化を目撃<span class="agenda-sub">朝のルーティンが一発のコマンドで完了する様子</span></div>
-        <div class="agenda-time">5 min</div>
+        <div class="agenda-time">10 min</div>
       </div>
       <div class="agenda-row">
         <div class="agenda-num">3</div>
         <div class="agenda-main">1プロンプトで資料が出る<span class="agenda-sub">日本語の依頼1本でリサーチ→HTML資料化</span></div>
-        <div class="agenda-time">5 min</div>
+        <div class="agenda-time">10 min</div>
       </div>
     </div>
   </div>
@@ -1425,7 +1432,7 @@ body {
 <!-- ============ Slide 18 / AI+ スポンサーパネル ============ -->
 <section class="slide slide--image" data-num="18" data-title="AI+ スポンサーパネル">
   <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">18 / 26</div></div>
-  <div class="slide-image-wrap">
+  <div class="slide-image-wrap slide-image-wrap--contained">
     <img src="assets/ai-plus-sponsor.jpg" alt="AI+ スポンサーパネル">
   </div>
 </section>
