@@ -368,7 +368,31 @@ body {
   margin-bottom: 40px;
 }
 
-/* Course preview (slide 18 right column) */
+/* Full-image slide (slides 18-20: AI+ panels) */
+.slide--image {
+  background: #F4F7FC;
+}
+.slide-image-wrap {
+  position: absolute;
+  top: 110px;
+  left: 80px;
+  right: 80px;
+  bottom: 70px;
+  display: grid;
+  place-items: center;
+}
+.slide-image-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 24px 64px rgba(11,18,32,0.16);
+}
+
+/* Course preview (slide 21 right column) */
 .course-preview-split {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -1038,7 +1062,7 @@ body {
 
 <!-- ============ Slide 2 / 自己紹介 ============ -->
 <section class="slide" data-num="2" data-title="講師：川端 一成">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">02 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">02 / 26</div></div>
   <div class="body">
     <h2 class="title">講師</h2>
     <div class="profile-grid">
@@ -1055,7 +1079,7 @@ body {
 
 <!-- ============ Slide 3 / 本日のゴール ============ -->
 <section class="slide" data-num="3" data-title="本日のゴール">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">03 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">03 / 26</div></div>
   <div class="body">
     <h2 class="title">本日のゴール</h2>
     <div class="hero-center">
@@ -1080,7 +1104,7 @@ body {
 
 <!-- ============ Slide 4 / 1時間後のあなた ============ -->
 <section class="slide" data-num="4" data-title="1時間後のあなた">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">04 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">04 / 26</div></div>
   <div class="body">
     <h2 class="title">1時間後のあなた</h2>
     <div class="exercise-block">
@@ -1101,7 +1125,7 @@ body {
 
 <!-- ============ Slide 5 / なぜ今 ============ -->
 <section class="slide" data-num="5" data-title="なぜ今やるべきか">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">05 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">05 / 26</div></div>
   <div class="body">
     <h2 class="title">なぜ、今やるべきか</h2>
     <div class="phrase-split">
@@ -1153,7 +1177,7 @@ body {
 
 <!-- ============ Slide 6 / 今日できるようになること ============ -->
 <section class="slide" data-num="6" data-title="今日できるようになること">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">06 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">06 / 26</div></div>
   <div class="body">
     <h2 class="title">この60分で体験すること</h2>
     <div class="agenda">
@@ -1178,7 +1202,7 @@ body {
 
 <!-- ============ Slide 7 / Claude Codeとは ============ -->
 <section class="slide" data-num="7" data-title="Claude Codeとは">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">07 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">07 / 26</div></div>
   <div class="body">
     <h2 class="title">Claude Code とは</h2>
     <div class="cc-hero">
@@ -1198,7 +1222,7 @@ body {
 
 <!-- ============ Slide 8 / デモ①扉 ============ -->
 <section class="slide slide--section" data-num="8" data-title="【デモ①】環境構築">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">08 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">08 / 26</div></div>
   <div class="section-wrap">
     <div class="section-eyebrow">Demo 01 / 15 min</div>
     <h2 class="section-title">15分後、<br>あなたのPCで<br>Claude Codeが動いています</h2>
@@ -1208,7 +1232,7 @@ body {
 
 <!-- ============ Slide 9 / Mac/Windows両方やる ============ -->
 <section class="slide" data-num="9" data-title="Mac/Windows両方やります">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">09 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">09 / 26</div></div>
   <div class="body">
     <h2 class="title">Mac／Windows 両方やります</h2>
     <div class="caution">
@@ -1232,7 +1256,7 @@ body {
 
 <!-- ============ Slide 10 / デモ①実演 ============ -->
 <section class="slide" data-num="10" data-title="デモ① 実演">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">10 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">10 / 26</div></div>
   <div class="body">
     <h2 class="title">【デモ①】環境構築 — ライブ実演</h2>
     <div class="demo">
@@ -1258,7 +1282,7 @@ body {
 
 <!-- ============ Slide 11 / デモ②扉 ============ -->
 <section class="slide slide--section" data-num="11" data-title="【デモ②】業務効率化">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">11 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">11 / 26</div></div>
   <div class="section-wrap">
     <div class="section-eyebrow">Demo 02 / 10 min</div>
     <h2 class="section-title">"自分の業務にも使えそう"<br>を持ち帰ってください</h2>
@@ -1268,7 +1292,7 @@ body {
 
 <!-- ============ Slide 12 / 朝の業務スタック ============ -->
 <section class="slide" data-num="12" data-title="朝の業務スタック">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">12 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">12 / 26</div></div>
   <div class="body">
     <h2 class="title">川端の朝の業務 — 一発のコマンドで終わる</h2>
     <div class="process-stack">
@@ -1305,7 +1329,7 @@ body {
 
 <!-- ============ Slide 13 / デモ②-1 実演 ============ -->
 <section class="slide" data-num="13" data-title="デモ②-1 実演">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">13 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">13 / 26</div></div>
   <div class="body">
     <h2 class="title">【デモ②-1】朝の業務自動化 — ライブ実演</h2>
     <div class="demo">
@@ -1331,7 +1355,7 @@ body {
 
 <!-- ============ Slide 14 / リサーチ→資料作成 ============ -->
 <section class="slide" data-num="14" data-title="リサーチ→資料作成">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">14 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">14 / 26</div></div>
   <div class="body">
     <h2 class="title">リサーチ → 資料作成</h2>
     <div class="big-phrase">
@@ -1344,7 +1368,7 @@ body {
 
 <!-- ============ Slide 15 / プロンプト全文 ============ -->
 <section class="slide" data-num="15" data-title="プロンプト全文">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">15 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">15 / 26</div></div>
   <div class="body">
     <h2 class="title">これだけ、です</h2>
     <div class="prompt-block">回転寿司大手3社（スシロー・くら寿司・かっぱ寿司）の
@@ -1360,7 +1384,7 @@ body {
 
 <!-- ============ Slide 16 / デモ②-2 実演 ============ -->
 <section class="slide" data-num="16" data-title="デモ②-2 実演">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">16 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">16 / 26</div></div>
   <div class="body">
     <h2 class="title">【デモ②-2】リサーチ→資料作成 — ライブ実演</h2>
     <div class="demo">
@@ -1386,7 +1410,7 @@ body {
 
 <!-- ============ Slide 17 / 質疑応答 ============ -->
 <section class="slide" data-num="17" data-title="質疑応答">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">17 / 23</div></div>
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">17 / 26</div></div>
   <div class="qa-wrap">
     <div class="qa-stack">
       <div class="qa-glyph">Q &amp; A</div>
@@ -1398,9 +1422,33 @@ body {
   </div>
 </section>
 
+<!-- ============ Slide 18 / AI+ スポンサーパネル ============ -->
+<section class="slide slide--image" data-num="18" data-title="AI+ スポンサーパネル">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">18 / 26</div></div>
+  <div class="slide-image-wrap">
+    <img src="assets/ai-plus-sponsor.jpg" alt="AI+ スポンサーパネル">
+  </div>
+</section>
+
+<!-- ============ Slide 19 / AI+ が選ばれる2つの理由 ============ -->
+<section class="slide slide--image" data-num="19" data-title="AI+ が選ばれる2つの理由">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">19 / 26</div></div>
+  <div class="slide-image-wrap">
+    <img src="assets/ai-plus-reasons.png" alt="AI+ が選ばれる2つの理由">
+  </div>
+</section>
+
+<!-- ============ Slide 20 / AI+ カリキュラム全体図 ============ -->
+<section class="slide slide--image" data-num="20" data-title="AI+ カリキュラム全体図">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">20 / 26</div></div>
+  <div class="slide-image-wrap">
+    <img src="assets/ai-plus-curriculum.png" alt="AI+ カリキュラム全体図">
+  </div>
+</section>
+
 <!-- ============ Slide 18 / 本講座の位置づけ ============ -->
-<section class="slide" data-num="18" data-title="本講座の位置づけ">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">18 / 23</div></div>
+<section class="slide" data-num="21" data-title="本講座の位置づけ">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">21 / 26</div></div>
   <div class="body">
     <h2 class="title title--compact">AI+ の選択式応用講座「Claude Code 入門・実践」</h2>
     <div class="course-preview-split">
@@ -1426,8 +1474,8 @@ body {
 </section>
 
 <!-- ============ Slide 19 / 到達できる姿 ============ -->
-<section class="slide" data-num="19" data-title="受講後に到達できる姿">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">19 / 23</div></div>
+<section class="slide" data-num="22" data-title="受講後に到達できる姿">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">22 / 26</div></div>
   <div class="body">
     <h2 class="title">受講後、あなたができること</h2>
     <div class="summary-list">
@@ -1456,8 +1504,8 @@ body {
 </section>
 
 <!-- ============ Slide 20 / 本日限定オファー ============ -->
-<section class="slide" data-num="20" data-title="本日限定オファー">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">20 / 23</div></div>
+<section class="slide" data-num="23" data-title="本日限定オファー">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">23 / 26</div></div>
   <div class="body">
     <h2 class="title">本日リアタイ限定オファー</h2>
     <div class="offer-hero">
@@ -1485,8 +1533,8 @@ body {
 </section>
 
 <!-- ============ Slide 21 / 3つの特典 ============ -->
-<section class="slide" data-num="21" data-title="3つの特典">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">21 / 23</div></div>
+<section class="slide" data-num="24" data-title="3つの特典">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">24 / 26</div></div>
   <div class="body">
     <h2 class="title">本日のオファーに付いてくる <span class="accent-strong">3つの特典</span></h2>
     <div class="benefits-grid">
@@ -1528,8 +1576,8 @@ body {
 </section>
 
 <!-- ============ Slide 22 / 3択CTA ============ -->
-<section class="slide" data-num="22" data-title="次の一歩を選んでください">
-  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">22 / 23</div></div>
+<section class="slide" data-num="25" data-title="次の一歩を選んでください">
+  <div class="hdr"><div class="hdr__mini">Claude Codeセミナー</div><div class="hdr__meta">25 / 26</div></div>
   <div class="body">
     <h2 class="title">次の一歩を、選んでください</h2>
     <div class="cta-grid">
@@ -1556,7 +1604,7 @@ body {
 </section>
 
 <!-- ============ Slide 23 / 締め ============ -->
-<section class="slide slide--final" data-num="23" data-title="あなたの番です">
+<section class="slide slide--final" data-num="26" data-title="あなたの番です">
   <div class="hdr"><div class="hdr__mini">&nbsp;</div><div class="hdr__meta">2026.05.29 / Webinar</div></div>
   <div class="cover-wrap">
     <div class="cover-eyebrow">Your Turn</div>
@@ -1569,7 +1617,7 @@ body {
 
 <div class="nav">
   <button class="nav-btn prev" aria-label="前へ">‹</button>
-  <span class="nav-indicator"><span class="cur">1</span> / 23</span>
+  <span class="nav-indicator"><span class="cur">1</span> / 26</span>
   <button class="nav-btn next" aria-label="次へ">›</button>
   <span class="nav-title" id="nav-title">表紙</span>
 </div>
